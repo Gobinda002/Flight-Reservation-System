@@ -2,7 +2,7 @@ import React from 'react'
 import Plane from '../assets/plane.png'
 import Logo from '../assets/logo.png'
 
-function index() {
+function HeroSection() {
   return (
     <section className="h-screen bg-gradient-to-b from-yellow-400 to-blue-700 text-center text-black relative overflow-hidden">
 
@@ -42,4 +42,4 @@ function index() {
   )
 }
 
-export default index 
+export default HeroSection
