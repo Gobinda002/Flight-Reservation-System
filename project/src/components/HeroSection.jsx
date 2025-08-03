@@ -6,22 +6,8 @@ function HeroSection() {
   return (
     <section className="h-screen bg-gradient-to-b from-yellow-400 to-blue-700 text-center text-black relative overflow-hidden">
 
-      {/* NavBar Section */}
 
-        <nav className='flex justify-between p-4 text-sm'>
-            <div className='flex item-centerfont-bold'>
-              <img src={Logo} alt="Logo" className="w-10 h-10" />
-              <h1 className='text-xl font-bold'>Fly High</h1>
-            </div>
-            <div className='space-x-4 text-xl'>
-                <a href="">Home</a>
-                <a href="">About</a>
-                <a href="">Offers</a>
-                <a href="">Tickets</a>
-                <a href="">Customer Support</a>
-            </div>
-            <div className='text-xl'>Login/Signup</div>
-        </nav>
+        
 
         {/* Home Section */}
 
