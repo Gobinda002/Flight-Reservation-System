@@ -37,7 +37,7 @@ function HeroSection() {
         </div>
 
         <img src={Plane} alt="plane" className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2" />
-        <p className='absolute bottom-2 w-full text-sm'>Scroll </p>
+        <p className='absolute bottom-10 w-full text-sm'>Scroll </p>
     </section>
   )
 }
