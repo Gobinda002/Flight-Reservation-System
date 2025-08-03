@@ -1,17 +1,27 @@
 import { useState } from 'react'
-import Navbar from './components/navbar'
 import HeroSection from './components/HeroSection'
+import Searching from './components/Searching'
 import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import booking from './pages/booking'
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div className="font-sans">
-      <HeroSection />
-    </div>
-      
-  )
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <div className="font-sans">
+        <HeroSection />
+        <Searching />
+      </div>
+    ),
+  },
+  {
+    path: "/results",
+    element: <booking />,
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App
