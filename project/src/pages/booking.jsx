@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 
 
-export default function ResultsUI() {
+export default function Booking() {
   const sampleFlights = [
     {
       departDate: "June 10, 2023",

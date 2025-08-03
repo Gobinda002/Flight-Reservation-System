@@ -3,7 +3,7 @@ import HeroSection from './components/HeroSection'
 import Searching from './components/Searching'
 import './App.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import booking from './pages/booking'
+import Booking from './pages/booking'
 
 
 const router = createBrowserRouter([
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/results",
-    element: <booking />,
+    path: "/booking.jsx",
+    element: <Booking />,
   },
 ]);
 
