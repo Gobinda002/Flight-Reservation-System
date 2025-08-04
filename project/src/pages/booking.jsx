@@ -34,14 +34,14 @@ export default function Booking() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-white/5 to-green-400 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-white/5 to-green-400 py-25">
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow overflow-hidden">
         
       {/* navbar */}
         <Navbar />
 
         {/* Body */}
-        <div className="flex flex-col md:flex-row gap-6 px-6 py-8">
+        <div className="flex flex-col md:flex-row gap-6 px- py-8 ">
           {/* Sidebar search */}
           <div className="md:w-1/4">
             <div className="bg-white rounded-xl p-6 shadow">
