@@ -2,7 +2,7 @@ import React from "react";
 import Plane from "../assets/plane.png";
 import Navbar from "../components/navbar";
 
-const LandingPage = () => {
+const HeroSection = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-400 via-orange-300 to-sky-400 relative overflow-hidden">
       <Navbar />
@@ -39,4 +39,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default HeroSection;

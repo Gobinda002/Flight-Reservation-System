@@ -8,7 +8,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* root shows HeroSection + Searching together */}
         <Route
           path="/"
           element={
