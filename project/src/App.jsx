@@ -4,42 +4,22 @@ import Searching from "./pages/Searching";
 import Booking from "./pages/booking";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-function App() {
+export default function App() {
   return (
-    <div>
-
-      <HeroSection />
-      <Searching />
-      <Booking />
-
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Searching />} />
-          <Route path="/booking" element={<Booking />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* root shows HeroSection + Searching together */}
+        <Route
+          path="/"
+          element={
+            <div>
+              <HeroSection />
+              <Searching />
+            </div>
+          }
+        />
+        <Route path="/booking" element={<Booking />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: (
-//       <div className="font-sans">
-//
-//       </div>
-//     ),
-//   },
-//   {
-//     path: "/booking.jsx",
-//     element: <Booking />,
-//   },
-// ]);
-
-// export default function App() {
-//   return <RouterProvider router={router} />;
-// }
