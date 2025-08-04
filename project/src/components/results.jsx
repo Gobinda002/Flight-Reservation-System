@@ -1,46 +1,47 @@
-import React from 'react'
+// src/pages/booking.jsx
+import React from 'react';
 import Navbar from '../components/navbar';
 
-export default function Booking() {
-  const sampleFlights = [
-    {
-      departDate: "June 10, 2023",
-      departFrom: "London Stansted (STN)",
-      departTime: "10:45",
-      arriveAt: "Stockholm Arlanda (ARN)",
-      arriveTime: "13:55",
-      duration: "2 h 10 m",
-      returnDate: "August 18, 2023",
-      returnFrom: "Stockholm Arlanda (ARN)",
-      returnTime: "16:20",
-      returnArriveAt: "London Stansted (STN)",
-      returnArriveTime: "17:55",
-      price: "$50",
-    },
-    {
-      departDate: "June 10, 2023",
-      departFrom: "London Stansted (STN)",
-      departTime: "11:45",
-      arriveAt: "Stockholm Arlanda (ARN)",
-      arriveTime: "14:55",
-      duration: "2 h 10 m",
-      returnDate: "August 18, 2023",
-      returnFrom: "Stockholm Arlanda (ARN)",
-      returnTime: "17:20",
-      returnArriveAt: "London Stansted (STN)",
-      returnArriveTime: "18:55",
-      price: "$62",
-    },
-  ];
+const sampleFlightsTwoWay = [
+  {
+    departDate: "June 10, 2023",
+    departFrom: "London Stansted (STN)",
+    departTime: "10:45",
+    arriveAt: "Stockholm Arlanda (ARN)",
+    arriveTime: "13:55",
+    duration: "2 h 10 m",
+    returnDate: "August 18, 2023",
+    returnFrom: "Stockholm Arlanda (ARN)",
+    returnTime: "16:20",
+    returnArriveAt: "London Stansted (STN)",
+    returnArriveTime: "17:55",
+    price: "$50",
+  },
+  // ... more two-way entries
+];
+
+const sampleFlightsOneWay = [
+  {
+    departDate: "June 10, 2023",
+    departFrom: "London Stansted (STN)",
+    departTime: "10:45",
+    arriveAt: "Stockholm Arlanda (ARN)",
+    arriveTime: "13:55",
+    duration: "2 h 10 m",
+    price: "$30",
+  },
+  // ... more one-way entries
+];
+
+export default function Booking({ mode = "round-trip" }) {
+  const isRoundTrip = mode === "round-trip";
+  const sampleFlights = isRoundTrip ? sampleFlightsTwoWay : sampleFlightsOneWay;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-500 via-white/5 to-green-400 py-25">
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow overflow-hidden">
-        
-      {/* navbar */}
         <Navbar />
 
-        {/* Body */}
         <div className="flex flex-col md:flex-row gap-6 px- py-8 ">
           {/* Sidebar search */}
           <div className="md:w-1/4">
@@ -68,13 +69,15 @@ export default function Booking() {
                     className="w-full bg-gray-100 rounded-md px-3 py-2 text-sm focus:outline-none"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">Return</label>
-                  <input
-                    defaultValue="18/08/2023"
-                    className="w-full bg-gray-100 rounded-md px-3 py-2 text-sm focus:outline-none"
-                  />
-                </div>
+                {isRoundTrip && (
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Return</label>
+                    <input
+                      defaultValue="18/08/2023"
+                      className="w-full bg-gray-100 rounded-md px-3 py-2 text-sm focus:outline-none"
+                    />
+                  </div>
+                )}
                 <button className="w-full mt-2 bg-black text-white py-2 rounded-md text-sm">
                   Change Search
                 </button>
@@ -85,7 +88,9 @@ export default function Booking() {
           {/* Results list */}
           <div className="flex-1 space-y-6">
             <div className="flex justify-between items-start">
-              <div className="text-gray-500 text-sm">Sort by: Lowest Price</div>
+              <div className="text-gray-500 text-sm">
+                Sort by: Lowest Price ({isRoundTrip ? "Round-trip" : "One-way"})
+              </div>
             </div>
 
             {sampleFlights.map((flight, i) => (
@@ -114,28 +119,33 @@ export default function Booking() {
                     </div>
                   </div>
 
-                  {/* Return */}
-                  <div className="mt-6 text-sm text-gray-500 mb-2">
-                    {flight.returnDate} – Return
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-4xl font-semibold">{flight.returnTime}</div>
-                      <div className="text-xs text-gray-500">{flight.returnFrom}</div>
-                    </div>
-                    <div className="flex flex-col items-center text-center">
-                      <div className="text-yellow-500 text-2xl">✈️</div>
-                      <div className="text-xs">{flight.duration}</div>
-                      <div className="h-px w-20 bg-gray-200 my-2" />
-                    </div>
-                    <div>
-                      <div className="text-4xl font-semibold">
-                        {flight.returnArriveTime}
+                  {/* Return - only if round-trip */}
+                  {isRoundTrip && (
+                    <>
+                      <div className="mt-6 text-sm text-gray-500 mb-2">
+                        {flight.returnDate} – Return
                       </div>
-                      <div className="text-xs text-gray-500">{flight.returnArriveAt}</div>
-                    </div>
-                  </div>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-4xl font-semibold">{flight.returnTime}</div>
+                          <div className="text-xs text-gray-500">{flight.returnFrom}</div>
+                        </div>
+                        <div className="flex flex-col items-center text-center">
+                          <div className="text-yellow-500 text-2xl">✈️</div>
+                          <div className="text-xs">{flight.duration}</div>
+                          <div className="h-px w-20 bg-gray-200 my-2" />
+                        </div>
+                        <div>
+                          <div className="text-4xl font-semibold">
+                            {flight.returnArriveTime}
+                          </div>
+                          <div className="text-xs text-gray-500">{flight.returnArriveAt}</div>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
+
                 <div className="w-full md:w-56 border-t md:border-t-0 md:border-l border-gray-100 flex flex-col justify-center items-center p-6">
                   <div className="text-3xl font-bold mb-2">{flight.price}</div>
                   <button className="bg-teal-600 text-white px-5 py-3 rounded-md text-sm font-medium">

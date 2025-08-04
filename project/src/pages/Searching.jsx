@@ -5,6 +5,8 @@ export default function SearchUI() {
   const [mode, setMode] = useState("oneway");
   const navigate = useNavigate();
 
+  navigate('/result', { state: { mode: 'one-way' } });
+
   return (
     <div
       className="min-h-screen flex flex-col"
@@ -116,7 +118,7 @@ export default function SearchUI() {
             <div className="mt-4">
               <button
                 type="button"
-                onClick={() => navigate("booking")}
+                onClick={() => navigate("result")}
                 className="bg-[#e97778] text-white px-10 py-3 rounded-lg text-xl tracking-wider font-semibold"
                 style={{ fontFamily: "Georgia, serif" }}
               >

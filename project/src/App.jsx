@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HeroSection from "./pages/HeroSection";
 import Searching from "./pages/Searching";
-import Booking from "./pages/booking";
+import Result from "./pages/result";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
             </div>
           }
         />
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   );
