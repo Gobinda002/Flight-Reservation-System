@@ -1,6 +1,6 @@
 import React from "react";
 import Plane from "../assets/plane.png";
-import Navbar from "./navbar";
+import Navbar from "../components/navbar";
 
 const LandingPage = () => {
   return (

@@ -1,4 +1,3 @@
-// src/pages/SearchUI.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -117,7 +116,7 @@ export default function SearchUI() {
             <div className="mt-4">
               <button
                 type="button"
-                onClick={() => navigate("../pages/booking.jsx")}
+                onClick={() => navigate("booking")}
                 className="bg-[#e97778] text-white px-10 py-3 rounded-lg text-xl tracking-wider font-semibold"
                 style={{ fontFamily: "Georgia, serif" }}
               >
