@@ -2,8 +2,11 @@ import { useState } from "react";
 import HeroSection from "./pages/HeroSection";
 import Searching from "./pages/Searching";
 import Result from "./pages/result";
+import Selected from './pages/selected'; 
+import Login from "./pages/login"; 
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -17,7 +20,9 @@ export default function App() {
             </div>
           }
         />
+        <Route path="/selected" element={<Selected />} />  {/* Correct URL path */}
         <Route path="/result" element={<Result />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

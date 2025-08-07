@@ -1,6 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ sampleFlights, isRoundTrip }) => {
+  const navigate = useNavigate();
+
+  const handleSelect = (flight) => {
+   navigate('/pages/Selected.jsx', { state: { flight } });
+
+  };
+
   return (
     <div className="flex-1 space-y-6">
       <div className="flex justify-between items-start">
@@ -62,7 +70,10 @@ const Card = ({ sampleFlights, isRoundTrip }) => {
 
           <div className="w-full md:w-56 border-t md:border-t-0 md:border-l border-gray-100 flex flex-col justify-center items-center p-6">
             <div className="text-3xl font-bold mb-2">{flight.price}</div>
-            <button className="bg-teal-600 text-white px-5 py-3 rounded-md text-sm font-medium">
+            <button
+              onClick={() => handleSelect(flight)}
+              className="bg-teal-600 text-white px-5 py-3 rounded-md text-sm font-medium"
+            >
               Select this flight
             </button>
           </div>
