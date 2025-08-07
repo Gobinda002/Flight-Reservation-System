@@ -15,7 +15,7 @@ const HeroSection = () => {
           ARRIVE IN COMFORT
         </h2>
 
-        {/* Discover text and button positioned to the right */}
+        {/* Discover text and button  */}
         <div className="w-full flex justify-end pr-10 mt-32">
           <div className="text-right max-w-xs">
             <p className="text-sm font-semibold font-mono mb-4">
