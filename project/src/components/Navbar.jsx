@@ -1,9 +1,20 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHomeClick = () => {
+    if (location.pathname === "/") {
+      // Already on homepage, just scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Navigate to home, then scroll to top after load
+      navigate("/");
+    }
+  };
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md text-black font-mono text-sm px-6 py-4  cursor-pointer">
@@ -15,7 +26,7 @@ const Navbar = () => {
 
         {/* Links */}
         <ul className="hidden md:flex space-x-6">
-           <li onClick={() => navigate('/')} className="text-blue-500 cursor-pointer">
+           <li onClick={handleHomeClick} className="text-blue-500 cursor-pointer">
             Home
           </li>
           <li>About</li>
