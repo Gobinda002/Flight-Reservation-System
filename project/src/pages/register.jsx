@@ -1,37 +1,45 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    if (!email || !password) {
+    if (!name || !email || !password) {
       setError("Please fill in all fields.");
       return;
     }
 
+    setLoading(true);
+
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ name, email, password }),
       });
 
-      const data = await res.json();
+      const data = await response.json();
 
-      if (!res.ok) {
-        setError(data.message || "Login failed");
+      if (!response.ok) {
+        setError(data.message || "Registration failed");
       } else {
-        setError("");
-        alert("Login successful!");
-        // TODO: redirect user or save auth token here
+        alert("Registration successful! You can now log in.");
+        setName("");
+        setEmail("");
+        setPassword("");
       }
     } catch (err) {
-      setError("Network error, please try again.");
+      setError("Failed to connect to the server.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,11 +49,24 @@ export default function Login() {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
 
         {error && (
           <div className="mb-4 text-red-600 font-medium text-sm">{error}</div>
         )}
+
+        <label htmlFor="name" className="block mb-2 text-sm font-medium">
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          autoComplete="name"
+          disabled={loading}
+        />
 
         <label htmlFor="email" className="block mb-2 text-sm font-medium">
           Email
@@ -57,6 +78,7 @@ export default function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
+          disabled={loading}
         />
 
         <label htmlFor="password" className="block mb-2 text-sm font-medium">
@@ -68,20 +90,22 @@ export default function Login() {
           className="w-full border border-gray-300 rounded-md px-3 py-2 mb-6 focus:outline-none focus:ring-2 focus:ring-teal-500"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
+          autoComplete="new-password"
+          disabled={loading}
         />
 
         <button
           type="submit"
-          className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 transition"
+          disabled={loading}
+          className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 transition disabled:opacity-50"
         >
-          Log In
+          {loading ? "Signing up..." : "Sign Up"}
         </button>
 
         <p className="mt-4 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-teal-600 hover:underline font-medium">
-            Sign Up
+          Already have an account?{" "}
+          <Link to="/login" className="text-teal-600 hover:underline font-medium">
+            Log In
           </Link>
         </p>
       </form>
