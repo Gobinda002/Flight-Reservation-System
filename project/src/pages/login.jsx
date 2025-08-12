@@ -30,7 +30,7 @@ export default function Login() {
         alert("Login successful!");
         // TODO: redirect user or save auth token here
       }
-    } catch (err) {
+    } catch {
       setError("Network error, please try again.");
     }
   };

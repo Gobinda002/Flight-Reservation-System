@@ -5,8 +5,7 @@ const Card = ({ sampleFlights, isRoundTrip }) => {
   const navigate = useNavigate();
 
   const handleSelect = (flight) => {
-   navigate('/pages/Selected.jsx', { state: { flight } });
-
+    navigate('/selected', { state: { flight, isRoundTrip } });
   };
 
   return (

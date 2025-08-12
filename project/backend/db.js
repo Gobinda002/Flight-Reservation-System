@@ -18,8 +18,8 @@ async function testDbConnection() {
         console.log('Successfully connected to MySQL database!');
         connection.release();
     } catch (error) {
-        console.error('Error connecting to MySQL database:', error.message);
-        process.exit(1);
+        console.warn('Warning: Could not connect to MySQL database:', error.message);
+        // Continue running without exiting so the app can still start in dev
     }
 }
 

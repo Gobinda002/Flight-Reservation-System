@@ -1,8 +1,7 @@
-import { useState } from "react";
 import HeroSection from "./pages/HeroSection";
 import Searching from "./pages/Searching";
 import Result from "./pages/result";
-import Selected from './pages/selected'; 
+import Selected from './pages/Selected'; 
 import Login from "./pages/login";
 import Register from "./pages/register";   
 import "./index.css";
@@ -24,7 +23,7 @@ export default function App() {
         <Route path="/selected" element={<Selected />} />  {/* Correct URL path */}
         <Route path="/result" element={<Result />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/register" element={<Register />} />
 
       </Routes>
     </BrowserRouter>

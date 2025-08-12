@@ -36,7 +36,7 @@ export default function Register() {
         setEmail("");
         setPassword("");
       }
-    } catch (err) {
+    } catch {
       setError("Failed to connect to the server.");
     } finally {
       setLoading(false);
