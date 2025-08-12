@@ -5,7 +5,7 @@ import Result from "./pages/result";
 import Selected from './pages/selected'; 
 import Login from "./pages/login";
 import Register from "./pages/register";   
-import "./App.css";
+import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
